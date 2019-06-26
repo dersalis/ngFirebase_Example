@@ -1,0 +1,14 @@
+<div class="wallet_container">
+  <div class="wallet_form">
+    <p>Zakup</p>
+    <input type="date" class="date" placeholder="data..." [(ngModel)]="walletService.data">
+    <select name="items" id="items" class="items" [(ngModel)]="walletService.type">
+      <option *ngFor="let type of walletService.types" [ngValue]="type">{{type}}</option>
+    </select>
+    <input type="number" class="price" placeholder="Koszt..." [(ngModel)]="walletService.value">
+    <button (click)="walletService.add()">Dodaj</button>
+
+    <p>Wydatki</p>
+    <div *ngFor="let ds of walletService.dataset">{{ds.data().date}} :: {{ds.data().type}} :: {{ds.data().value}} zł <span (click)="walletService.delete(ds)">[-]</span></div>
+  </div>
+</div>
